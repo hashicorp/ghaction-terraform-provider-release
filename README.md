@@ -24,14 +24,14 @@ jobs:
   # ... potentially other jobs ...
   terraform-provider-release:
     name: 'Terraform Provider Release'
-    uses: bflad/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
       setup-go-version: '1.17.x'
 ```
 
-See the [workflow file](https://github.com/bflad/ghaction-terraform-provider-release/blob/main/.github/workflows/community.yml) for all available inputs.
+See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider-release/blob/main/.github/workflows/community.yml) for all available inputs.
 
 ### HashiCorp Providers
 
@@ -49,7 +49,7 @@ jobs:
   # ... potentially other jobs ...
   terraform-provider-release:
     name: 'Terraform Provider Release'
-    uses: bflad/ghaction-terraform-provider-release/.github/workflows/hashicorp.yml@v1
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/hashicorp.yml@v1
     secrets:
       hc-releases-aws-access-key-id: '${{ secrets.TF_PROVIDER_RELEASE_AWS_ACCESS_KEY_ID }}'
       hc-releases-aws-secret-access-key: '${{ secrets.TF_PROVIDER_RELEASE_AWS_SECRET_ACCESS_KEY }}'
@@ -64,7 +64,7 @@ jobs:
       setup-go-version: '1.17.x'
 ```
 
-See the [workflow file](https://github.com/bflad/ghaction-terraform-provider-release/blob/main/.github/workflows/hashicorp.yml) for all available inputs.
+See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider-release/blob/main/.github/workflows/hashicorp.yml) for all available inputs.
 
 ## Additional Features
 
@@ -95,7 +95,7 @@ jobs:
   terraform-provider-release:
     name: 'Terraform Provider Release'
     needs: [go-version]
-    uses: bflad/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
@@ -132,7 +132,7 @@ jobs:
   terraform-provider-release:
     name: 'Terraform Provider Release'
     needs: [release-notes]
-    uses: bflad/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v1
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
