@@ -34,16 +34,16 @@ on:
         description: 'AWS IAM Role to Assume for hc-releases (TF_PROVIDER_RELEASE_AWS_ROLE_ARN)'
         required: true
       hc-releases-fastly-api-token:
-        description: 'Fastly API Token for hc-releases (FASTLY_STATIC_PURGE_TOKEN)'
+        description: 'Fastly API Token for hc-releases (HASHI_FASTLY_PURGE_TOKEN)'
         required: true
       hc-releases-github-token:
-        description: 'GitHub Personal Access Token to Access hc-releases (HC_RELEASES_TOKEN)'
+        description: 'GitHub Personal Access Token to Access hc-releases (HASHI_RELEASES_GITHUB_TOKEN)'
         required: true
       hc-releases-terraform-registry-sync-token:
         description: 'Terraform Registry Sync Token for hc-releases (TF_PROVIDER_RELEASE_TERRAFORM_REGISTRY_SYNC_TOKEN)'
         required: true
       setup-signore-github-token:
-        description: 'GitHub Personal Access Token to Access setup-signore (SETUP_SIGNORE_GITHUB_TOKEN)'
+        description: 'GitHub Personal Access Token to Access setup-signore (HASHI_SIGNORE_GITHUB_TOKEN)'
         required: true
       # See also: TF-279 Repository Owned HashiCorp Provider Releases
       signore-client-id:
