@@ -14,8 +14,8 @@ on:
         description: 'Enable release notes handling (must have previously uploaded artifact named "release-notes" with file "release-notes.txt")'
         required: false
         type: boolean
-      aws-role-duration-seconds:
-        description: 'The duration, in seconds, of the role session'
+      hc-releases-aws-role-duration-seconds:
+        description: 'AWS IAM Role session duration, in seconds, for hc-releases'
         default: 3600
         required: false
         type: number
