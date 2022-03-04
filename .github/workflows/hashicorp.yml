@@ -14,6 +14,11 @@ on:
         description: 'Enable release notes handling (must have previously uploaded artifact named "release-notes" with file "release-notes.txt")'
         required: false
         type: boolean
+      hc-releases-aws-role-duration-seconds:
+        description: 'AWS IAM Role session duration, in seconds, for hc-releases'
+        default: 3600
+        required: false
+        type: number
       setup-go-version:
         description: 'setup-go Go Version'
         required: true
@@ -78,7 +83,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.hc-releases-aws-secret-access-key }}
           aws-region: us-west-2
           role-to-assume: ${{ secrets.hc-releases-aws-role-arn }}
-          role-duration-seconds: 3600
+          role-duration-seconds: ${{ inputs.hc-releases-aws-role-duration-seconds }}
           # TODO: allow session tagging once IAM permission changes addressed
           # Reference: https://github.com/hashicorp/hc-releases/issues/124
           role-skip-session-tagging: true
