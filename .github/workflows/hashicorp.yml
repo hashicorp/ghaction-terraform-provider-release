@@ -83,7 +83,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.hc-releases-aws-secret-access-key }}
           aws-region: us-west-2
           role-to-assume: ${{ secrets.hc-releases-aws-role-arn }}
-          role-duration-seconds: ${{ inputs.aws-role-duration-seconds }}
+          role-duration-seconds: ${{ inputs.hc-releases-aws-role-duration-seconds }}
           # TODO: allow session tagging once IAM permission changes addressed
           # Reference: https://github.com/hashicorp/hc-releases/issues/124
           role-skip-session-tagging: true
