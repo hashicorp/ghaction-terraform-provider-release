@@ -25,7 +25,7 @@ on:
         type: string
       signore-signer:
         description: 'signore Signer'
-        default: 'interim_signing_subkey_7685B676'
+        default: 'signing_subkey_CD27AB87'
         required: false
         type: string
     secrets:
