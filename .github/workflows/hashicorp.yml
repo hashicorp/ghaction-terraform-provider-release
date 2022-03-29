@@ -29,18 +29,6 @@ on:
         required: false
         type: string
     secrets:
-      hc-releases-aws-access-key-id:
-        description: 'AWS IAM Access Key Identifier for hc-releases (TF_PROVIDER_RELEASE_AWS_ACCESS_KEY_ID)'
-        required: true
-      hc-releases-aws-secret-access-key:
-        description: 'AWS IAM Access Key Secret for hc-releases (TF_PROVIDER_RELEASE_AWS_SECRET_ACCESS_KEY)'
-        required: true
-      hc-releases-aws-role-arn:
-        description: 'AWS IAM Role to Assume for hc-releases (TF_PROVIDER_RELEASE_AWS_ROLE_ARN)'
-        required: true
-      hc-releases-fastly-api-token:
-        description: 'Fastly API Token for hc-releases (HASHI_FASTLY_PURGE_TOKEN)'
-        required: true
       hc-releases-github-token:
         description: 'GitHub Personal Access Token to Access hc-releases (HASHI_RELEASES_GITHUB_TOKEN)'
         required: true
@@ -70,23 +58,15 @@ jobs:
         with:
           go-version: ${{ inputs.setup-go-version }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
-      - uses: hashicorp/setup-hc-releases@v1
+      -
+        name: Setup hc-releases
+        uses: hashicorp/actions-setup-hc-releases@v1
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
       - uses: hashicorp/setup-signore@v2
         with:
           github-token: ${{ secrets.setup-signore-github-token }}
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.hc-releases-aws-access-key-id }}
-          aws-secret-access-key: ${{ secrets.hc-releases-aws-secret-access-key }}
-          aws-region: us-west-2
-          role-to-assume: ${{ secrets.hc-releases-aws-role-arn }}
-          role-duration-seconds: ${{ inputs.hc-releases-aws-role-duration-seconds }}
-          # TODO: allow session tagging once IAM permission changes addressed
-          # Reference: https://github.com/hashicorp/hc-releases/issues/124
-          role-skip-session-tagging: true
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
         uses: goreleaser/goreleaser-action@v2
@@ -111,14 +91,29 @@ jobs:
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
+          HC_RELEASES_HOST_STAGING: ${{ secrets.HC_RELEASES_HOST_STAGING }}
+          HC_RELEASES_KEY_STAGING: ${{ secrets.HC_RELEASES_KEY_STAGING }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PUBLIC_KEY_ID: ${{ inputs.gpg-public-key-id }}
           SIGNORE_CLIENT_ID: ${{ secrets.signore-client-id }}
           SIGNORE_CLIENT_SECRET: ${{ secrets.signore-client-secret }}
           SIGNORE_SIGNER: ${{ inputs.signore-signer }}
-      - name: hc-releases publish
-        run: hc-releases publish -product=${{ github.event.repository.name }}
-        env:
-          FASTLY_API_TOKEN: ${{ secrets.hc-releases-fastly-api-token }}
-          TERRAFORM_REGISTRY_SYNC_TOKEN: ${{ secrets.hc-releases-terraform-registry-sync-token }}
+      -
+        name: Create Release metadata
+        uses: hashicorp/actions-hc-releases-create-metadata@main
+        with:
+          private-tools-token: ${{ secrets.CODESIGN_GITHUB_TOKEN }}
+          product-name: "terraform-ls"
+          version: ${{ github.ref_name }}
+          hc-releases-host: ${{ secrets.HC_RELEASES_HOST_STAGING}}
+          hc-releases-key: ${{ secrets.HC_RELEASES_KEY_STAGING }}
+      -
+        name: Promote
+        uses: hashicorp/actions-hc-releases-promote@main
+        with:
+          product-name: "terraform-ls"
+          version: ${{ github.ref_name }}
+          hc-releases-host: ${{ secrets.HC_RELEASES_HOST_PROD }}
+          hc-releases-key: ${{ secrets.HC_RELEASES_KEY_PROD }}
+          hc-releases-source_env_key: ${{ secrets.HC_RELEASES_KEY_STAGING }}
 
