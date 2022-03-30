@@ -45,6 +45,13 @@ on:
       signore-client-secret:
         description: 'signore Client Secret (SIGNORE_CLIENT_SECRET)'
         required: true
+      hc-releases-host:
+        description: 'Host for hc-releases'
+        required: false
+      hc-releases-key:
+        description: 'Key for hc-releases'
+        required: false
+      
 
 jobs:
   Release:
