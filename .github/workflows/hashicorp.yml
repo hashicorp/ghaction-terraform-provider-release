@@ -91,8 +91,6 @@ jobs:
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
-          HC_RELEASES_HOST_STAGING: ${{ secrets.HC_RELEASES_HOST_STAGING }}
-          HC_RELEASES_KEY_STAGING: ${{ secrets.HC_RELEASES_KEY_STAGING }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PUBLIC_KEY_ID: ${{ inputs.gpg-public-key-id }}
           SIGNORE_CLIENT_ID: ${{ secrets.signore-client-id }}
