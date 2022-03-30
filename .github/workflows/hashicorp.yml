@@ -103,7 +103,7 @@ jobs:
         uses: hashicorp/actions-hc-releases-create-metadata@main
         with:
           private-tools-token: ${{ secrets.CODESIGN_GITHUB_TOKEN }}
-          product-name: "terraform-ls"
+          product-name: ${{ github.event.repository.name }}
           version: ${{ github.ref_name }}
           hc-releases-host: ${{ secrets.HC_RELEASES_HOST_STAGING}}
           hc-releases-key: ${{ secrets.HC_RELEASES_KEY_STAGING }}
@@ -111,9 +111,9 @@ jobs:
         name: Promote
         uses: hashicorp/actions-hc-releases-promote@main
         with:
-          product-name: "terraform-ls"
+          product-name: ${{ github.event.repository.name }}
           version: ${{ github.ref_name }}
           hc-releases-host: ${{ secrets.HC_RELEASES_HOST_PROD }}
           hc-releases-key: ${{ secrets.HC_RELEASES_KEY_PROD }}
           hc-releases-source_env_key: ${{ secrets.HC_RELEASES_KEY_STAGING }}
-
+          hc-releases-terraform-registry-sync-token: ${{ secrets.hc-releases-terraform-registry-sync-token }}
