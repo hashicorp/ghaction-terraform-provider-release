@@ -28,12 +28,7 @@ on:
         default: 'signing_subkey_CD27AB87'
         required: false
         type: string
-      hc-releases-host-prod:
-        description: 'Host for hc-releases prod'
-        required: false
-      hc-releases-host-staging:
-        description: 'Host for hc-releases staging'
-        required: false
+
     secrets:
       hc-releases-github-token:
         description: 'GitHub Personal Access Token to Access hc-releases (HASHI_RELEASES_GITHUB_TOKEN)'
@@ -56,6 +51,12 @@ on:
         required: false
       hc-releases-key-prod:
         description: 'Key for hc-releases prod'
+        required: false
+      hc-releases-host-prod:
+        description: 'Host for hc-releases prod'
+        required: false
+      hc-releases-host-staging:
+        description: 'Host for hc-releases staging'
         required: false
 
 
@@ -86,7 +87,7 @@ jobs:
         with:
           args: release --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
-          HC_RELEASES_HOST: ${{ inputs.hc-releases-host-staging }}
+          HC_RELEASES_HOST: ${{ secrets.hc-releases-host-staging }}
           HC_RELEASES_KEY: ${{ secrets.hc-releases-key-staging }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PUBLIC_KEY_ID: ${{ inputs.gpg-public-key-id }}
@@ -106,7 +107,7 @@ jobs:
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
-          HC_RELEASES_HOST: ${{ inputs.hc-releases-host-staging }}
+          HC_RELEASES_HOST: ${{ secrets.hc-releases-host-staging }}
           HC_RELEASES_KEY: ${{ secrets.hc-releases-key-staging }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PUBLIC_KEY_ID: ${{ inputs.gpg-public-key-id }}
@@ -120,7 +121,7 @@ jobs:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
           version: ${{ github.ref_name }}
-          hc-releases-host: ${{ inputs.hc-releases-host-staging }}
+          hc-releases-host: ${{ secrets.hc-releases-host-staging }}
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
       -
         name: Promote
@@ -128,7 +129,7 @@ jobs:
         with:
           product-name: ${{ github.event.repository.name }}
           version: ${{ github.ref_name }}
-          hc-releases-host: ${{ inputs.hc-releases-host-prod }}
+          hc-releases-host: ${{ secrets.hc-releases-host-prod }}
           hc-releases-key: ${{ secrets.hc-releases-key-prod }}
           hc-releases-source_env_key: ${{ secrets.hc-releases-key-staging }}
           skip-terraform-registry-sync: "true"
