@@ -47,17 +47,17 @@ on:
         description: 'signore Client Secret (SIGNORE_CLIENT_SECRET)'
         required: true
       hc-releases-key-staging:
-        description: 'Key for hc-releases staging'
-        required: false
+        description: 'Key for hc-releases staging (HC_RELEASES_KEY_STAGING)'
+        required: true
       hc-releases-key-prod:
-        description: 'Key for hc-releases prod'
-        required: false
+        description: 'Key for hc-releases prod (HC_RELEASES_KEY_PROD)'
+        required: true
       hc-releases-host-prod:
-        description: 'Host for hc-releases prod'
-        required: false
+        description: 'Host for hc-releases prod (HC_RELEASES_HOST_PROD)'
+        required: true
       hc-releases-host-staging:
-        description: 'Host for hc-releases staging'
-        required: false
+        description: 'Host for hc-releases staging (HC_RELEASES_HOST_STAGING)'
+        required: true
 
 
 jobs:
