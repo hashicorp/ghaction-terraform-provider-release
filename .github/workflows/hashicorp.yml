@@ -29,7 +29,7 @@ on:
         required: false
         type: string
       product-version:
-        description: 'Product Version'
+        description: 'Product Version (e.g. v1.2.3 or github.ref_name)'
         required: true
         type: string
 
@@ -120,7 +120,7 @@ jobs:
           SIGNORE_SIGNER: ${{ inputs.signore-signer }}
       -
         name: Create Release metadata
-        uses: hashicorp/actions-hc-releases-create-metadata@bshore-test
+        uses: hashicorp/actions-hc-releases-create-metadata@v1
         with:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
@@ -129,7 +129,7 @@ jobs:
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
       -
         name: Promote
-        uses: hashicorp/actions-hc-releases-promote@main
+        uses: hashicorp/actions-hc-releases-promote@v1
         with:
           product-name: ${{ github.event.repository.name }}
           version: ${{ inputs.product-version }}
