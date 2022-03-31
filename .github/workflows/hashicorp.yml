@@ -28,6 +28,10 @@ on:
         default: 'signing_subkey_CD27AB87'
         required: false
         type: string
+      product-version:
+        description: 'Product Version'
+        required: true
+        type: string
 
     secrets:
       hc-releases-github-token:
@@ -120,7 +124,7 @@ jobs:
         with:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
-          version: ${{ github.ref_name }}
+          version: ${{ inputs.product-version }}
           hc-releases-host: ${{ secrets.hc-releases-host-staging }}
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
       -
@@ -128,7 +132,7 @@ jobs:
         uses: hashicorp/actions-hc-releases-promote@main
         with:
           product-name: ${{ github.event.repository.name }}
-          version: ${{ github.ref_name }}
+          version: ${{ inputs.product-version }}
           hc-releases-host: ${{ secrets.hc-releases-host-prod }}
           hc-releases-key: ${{ secrets.hc-releases-key-prod }}
           hc-releases-source_env_key: ${{ secrets.hc-releases-key-staging }}
