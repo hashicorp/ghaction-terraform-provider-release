@@ -74,7 +74,7 @@ jobs:
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
       -
         name: Setup hc-releases
-        uses: hashicorp/actions-setup-hc-releases@v1
+        uses: hashicorp/setup-hc-releases@v2
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
