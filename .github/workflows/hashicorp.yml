@@ -136,5 +136,4 @@ jobs:
           hc-releases-host: ${{ secrets.hc-releases-host-prod }}
           hc-releases-key: ${{ secrets.hc-releases-key-prod }}
           hc-releases-source_env_key: ${{ secrets.hc-releases-key-staging }}
-          skip-terraform-registry-sync: "true"
           hc-releases-terraform-registry-sync-token: ${{ secrets.hc-releases-terraform-registry-sync-token }}
