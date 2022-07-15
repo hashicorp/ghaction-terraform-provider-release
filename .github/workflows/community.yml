@@ -33,10 +33,10 @@ jobs:
           go-version: ${{ inputs.setup-go-version }}
       - name: Import GPG key
         id: import_gpg
-        uses: hashicorp/ghaction-import-gpg@v2.1.0
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.gpg-private-key }}
-          PASSPHRASE: ${{ secrets.gpg-private-key-passphrase }}
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.gpg-private-key }}
+          passphrase: ${{ secrets.gpg-private-key-passphrase }}
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
         uses: goreleaser/goreleaser-action@v2
