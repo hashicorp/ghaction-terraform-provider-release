@@ -48,7 +48,7 @@ jobs:
       - if: inputs.release-notes
         id: release-notes-download
         name: Release Notes Download
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: release-notes
           path: /tmp
