@@ -72,7 +72,7 @@ jobs:
         with:
           # Allow tag to be fetched when ref is a commit
           fetch-depth: 0
-      - uses: actions/setup-go@v2
+      - uses: actions/setup-go@v3
         with:
           go-version: ${{ inputs.setup-go-version }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
