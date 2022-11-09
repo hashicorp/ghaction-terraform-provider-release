@@ -1,0 +1,19 @@
+on:
+  workflow_call:
+
+jobs:
+  generate-release-notes:
+      - name: Generate Release Notes
+        # This sed command
+        # - Removes the first line of CHANGELOG.md if it contains a # character
+        # - Removes the second line if it is empty
+        # - Includes all lines of the CHANGLOG.md file until it finds a line containing the version number from the _previous_ v*.*.* tag (identified using the latest tag, which matches the release being made)
+        # >>> Note: with this method using `git describe`, all tags must be reachable from the commit tagged for the release. You can check if tags are accessible using the command `git tag --merged`
+        run: sed -n -e "1{/# /d;}" -e "2{/^$/d;}" -e "/# $(git describe --abbrev=0 --exclude="$(git describe --abbrev=0 --match='v*.*.*' --tags)" --match='v*.*.*' --tags | tr -d v)/q;p" CHANGELOG.md > release-notes.txt
+      - name: Release Notes Upload
+        id: release-notes-upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-notes
+          path: release-notes.txt
+          retention-days: 1
