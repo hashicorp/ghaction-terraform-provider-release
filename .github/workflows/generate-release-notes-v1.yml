@@ -3,6 +3,10 @@ on:
 
 jobs:
   generate-release-notes:
+    # Reach out in #team-rel-eng to get your repositories allow-listed to use custom runners
+    # Custom runners range in size from 4 core to 64 core and sizes `small` through `xl` are supported
+    runs-on: [custom, linux, large]
+    steps:
       - name: Generate Release Notes
         # This sed command
         # - Removes the first line of CHANGELOG.md if it contains a # character
