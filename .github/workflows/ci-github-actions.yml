@@ -1,0 +1,23 @@
+# Continuous integration handling for GitHub Actions workflows
+name: ci-github-actions
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/*.yml
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 'stable'
+      - run: go install github.com/rhysd/actionlint/cmd/actionlint@latest
+      # Ignore false positives with actions/download-artifact
+      # Reference: https://github.com/actions/download-artifact#download-path-output
+      - run: actionlint -ignore 'property "download-path" is not defined in object type {}'
