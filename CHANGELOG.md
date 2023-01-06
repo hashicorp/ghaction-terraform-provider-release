@@ -1,3 +1,13 @@
+# v2.2.0
+
+ENHANCEMENTS:
+
+community: Added `setup-go-version-file` input for specifying a file path which contains the Go version, such as `.go-version` or `go.mod` ([#25](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/25))
+community: Added `git-ref` input for specifying the Git reference for checkout ([#26](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/26))
+hashicorp: Added `setup-go-version-file` input for specifying a file path which contains the Go version, such as `.go-version` or `go.mod` ([#25](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/25))
+hashicorp: Use `product-version` input for specifying the Git reference for checkout, which enables releases from non-default branches ([#26](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/26))
+
+
 # v2.1.0
 
 community: Use `crazy-max/ghaction-import-gpg@v5` instead of deprecated `hashicorp/ghaction-import-gpg@v2.1.0`
