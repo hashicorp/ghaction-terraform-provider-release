@@ -11,7 +11,11 @@ on:
         type: boolean
       setup-go-version:
         description: 'setup-go Go Version'
-        required: true
+        required: false
+        type: string
+      setup-go-version-file:
+        description: 'setup-go File From Which To Read Go Version'
+        required: false
         type: string
       git-ref:
         description: 'branch, tag or SHA to checkout'
@@ -36,6 +40,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: ${{ inputs.setup-go-version }}
+          go-version-file: ${{ inputs.setup-go-version-file }}
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5

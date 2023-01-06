@@ -21,7 +21,11 @@ on:
         type: number
       setup-go-version:
         description: 'setup-go Go Version'
-        required: true
+        required: false
+        type: string
+      setup-go-version-file:
+        description: 'setup-go File From Which To Read Go Version'
+        required: false
         type: string
       signore-signer:
         description: 'signore Signer'
@@ -78,6 +82,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: ${{ inputs.setup-go-version }}
+          go-version-file: ${{ inputs.setup-go-version-file }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
       -
         name: Setup hc-releases
