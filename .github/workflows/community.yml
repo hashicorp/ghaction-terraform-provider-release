@@ -13,6 +13,10 @@ on:
         description: 'setup-go Go Version'
         required: true
         type: string
+      git-ref:
+        description: 'branch, tag or SHA to checkout'
+        required: false
+        type: string
     secrets:
       gpg-private-key:
         description: 'GPG Private Key'
@@ -27,6 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ inputs.git-ref }}
           fetch-depth: 0
       - uses: actions/setup-go@v3
         with:

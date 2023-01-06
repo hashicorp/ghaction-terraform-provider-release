@@ -72,6 +72,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ inputs.product-version }}
           # Allow tag to be fetched when ref is a commit
           fetch-depth: 0
       - uses: actions/setup-go@v3
