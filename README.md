@@ -10,12 +10,13 @@ _If you are using the [terraform-provider-scaffolding template repository](https
 
 This workflow automatically handles:
 
-- Installing the [Go](https://go.dev/) version specified in the `setup-go-version` input.
+- Checking out the Git repository using a Git reference in the `git-ref` input, or the `HEAD` of the default branch.
+- Installing the [Go](https://go.dev/) version specified in the `setup-go-version` or `setup-go-version-file` input.
 - Importing the GPG key for signing specified in the `gpg-private-key` secret input.
 - Downloading and using the `release-notes` artifact, if the `release-notes` input is enabled.
 - Running [Goreleaser](https://goreleaser.com/), which builds the provider for multiple platforms, creates a GitHub Release, and uploads release assets.
 
-Ensure all instructions have been followed on the [Publishing Providers page](https://www.terraform.io/docs/registry/providers/publishing.html), including setting up GPG keys in the [Terraform Registry](https://registry.terraform.io/).
+Ensure all instructions have been followed on the [Publishing Providers page](https://developer.hashicorp.com/terraform/registry/providers/publishing), including setting up GPG keys in the [Terraform Registry](https://registry.terraform.io/).
 
 To use the reusable workflow, update the `.github/workflows/release.yml` configuration to include the following:
 
@@ -37,7 +38,8 @@ See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider
 
 This workflow automatically handles:
 
-- Installing the [Go](https://go.dev/) version specified in the `setup-go-version` input.
+- Checking out the Git repository using the `product-version` input as the Git reference.
+- Installing the [Go](https://go.dev/) version specified in the `setup-go-version` or `setup-go-version-file` input.
 - Installing and authenticating `signore` and `hc-releases` for signing and publishing releasing assets.
 - Downloading and using the `release-notes` artifact, if the `release-notes` input is enabled.
 - Running [Goreleaser](https://goreleaser.com/), which builds the provider for multiple platforms, creates a GitHub Release, and uploads release assets.
@@ -71,38 +73,6 @@ See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider
 ## Additional Features
 
 Each of the reusable workflows can be used with additional automation features. These configurations are an example of many possibilities.
-
-### Reading Go Version From File
-
-Until [actions/setup-go](https://github.com/actions/setup-go/) supports [fetching the version from a file](https://github.com/actions/setup-go/issues/23), a separate job can be used to read a file containing the Go version, such as:
-
-```yaml
-jobs:
-  # ... other jobs ...
-  go-version:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.go-version.outputs.version }}
-    steps:
-      - uses: actions/checkout@v2
-      - id: go-version
-        run: echo "::set-output name=version::$(cat ./.go-version)"
-```
-
-Then the output of that job can be passed as an input to the release job:
-
-```yaml
-jobs:
-  # ... other jobs ...
-  terraform-provider-release:
-    name: 'Terraform Provider Release'
-    needs: [go-version]
-    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v2
-    secrets:
-      gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
-    with:
-      setup-go-version: '${{ needs.go-version.outputs.version }}'
-```
 
 ### Setting Release Notes From Changelog
 

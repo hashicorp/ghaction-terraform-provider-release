@@ -33,7 +33,7 @@ on:
         required: false
         type: string
       product-version:
-        description: 'Product Version (e.g. v1.2.3 or github.ref_name)'
+        description: 'Product Version (e.g. v1.2.3 or github.ref_name if already the tag name)'
         required: true
         type: string
 
@@ -76,17 +76,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.product-version }}
-          # Allow tag to be fetched when ref is a commit
           fetch-depth: 0
+          ref: ${{ inputs.product-version }}
       - uses: actions/setup-go@v3
         with:
           go-version: ${{ inputs.setup-go-version }}
           go-version-file: ${{ inputs.setup-go-version-file }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
-      -
-        name: Setup hc-releases
-        uses: hashicorp/setup-hc-releases@v2
+      - uses: hashicorp/setup-hc-releases@v2
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
