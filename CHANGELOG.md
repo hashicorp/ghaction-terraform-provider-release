@@ -1,3 +1,10 @@
+# v2.3.0 (Unreleased)
+
+NOTES:
+
+* community: Calls to other actions are now version pinned by Git commit rather than tag ([#31](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/31))
+* hashicorp: Calls to other actions are now version pinned by Git commit rather than tag ([#31](https://github.com/hashicorp/ghaction-terraform-provider-release/pull/31))
+
 # v2.2.0
 
 ENHANCEMENTS:
