@@ -74,25 +74,25 @@ jobs:
     # Custom runners range in size from 4 core to 64 core and sizes `small` through `xl` are supported
     runs-on: [custom, linux, large]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
         with:
           fetch-depth: 0
           ref: ${{ inputs.product-version }}
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@6edd4406fa81c3da01a34fa6f6343087c207a568 # v3.5.0
         with:
           go-version: ${{ inputs.setup-go-version }}
           go-version-file: ${{ inputs.setup-go-version-file }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
-      - uses: hashicorp/setup-hc-releases@v2
+      - uses: hashicorp/setup-hc-releases@b6278359d2a03a51027ed6249ee3eee9ee56aae7 # v2.1.0
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
-      - uses: hashicorp/setup-signore@v2
+      - uses: hashicorp/setup-signore@836d17298d834433dfa300ba25290b4341875439 # v2.0.0
         with:
           github-token: ${{ secrets.setup-signore-github-token }}
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@8f67e590f2d095516493f017008adc464e63adb1 # v4.1.0
         with:
           args: release --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
@@ -106,13 +106,13 @@ jobs:
       - if: inputs.release-notes
         id: release-notes-download
         name: Release Notes Download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
           name: release-notes
           path: /tmp
       - if: inputs.release-notes
         name: goreleaser release (with release notes)
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@8f67e590f2d095516493f017008adc464e63adb1 # v4.1.0
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
@@ -125,7 +125,7 @@ jobs:
           SIGNORE_SIGNER: ${{ inputs.signore-signer }}
       -
         name: Create Release metadata
-        uses: hashicorp/actions-hc-releases-create-metadata@v1
+        uses: hashicorp/actions-hc-releases-create-metadata@2133ef0070a2e41b237f44b7e21f29ac4c34cd04 # v1.0.1
         with:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
@@ -134,7 +134,7 @@ jobs:
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
       -
         name: Promote
-        uses: hashicorp/actions-hc-releases-promote@v1
+        uses: hashicorp/actions-hc-releases-promote@811b5f3b44787dbb5c3aa21d3fe8a4e844eb41ed # v1.0.0
         with:
           product-name: ${{ github.event.repository.name }}
           version: ${{ inputs.product-version }}
