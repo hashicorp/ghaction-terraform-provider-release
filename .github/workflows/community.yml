@@ -49,7 +49,7 @@ jobs:
           passphrase: ${{ secrets.gpg-private-key-passphrase }}
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
-        uses: goreleaser/goreleaser-action@8f67e590f2d095516493f017008adc464e63adb1 # v4.1.0
+        uses: goreleaser/goreleaser-action@f82d6c1c344bcacabba2c841718984797f664a6b # v4.2.0
         with:
           args: release --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
@@ -64,7 +64,7 @@ jobs:
           path: /tmp
       - if: inputs.release-notes
         name: goreleaser release (with release notes)
-        uses: goreleaser/goreleaser-action@8f67e590f2d095516493f017008adc464e63adb1 # v4.1.0
+        uses: goreleaser/goreleaser-action@f82d6c1c344bcacabba2c841718984797f664a6b # v4.2.0
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --rm-dist ${{ inputs.goreleaser-release-args }}
         env:
