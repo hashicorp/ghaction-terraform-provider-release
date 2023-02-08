@@ -22,7 +22,7 @@ jobs:
   major-release-version:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.major-release-version.outputs.version }}
+      version: ${{ steps.major-version.outputs.version }}
     steps:
       - id: major-version
         run: echo "version=$(echo "${{ inputs.versionNumber }}" | cut -d. -f1)" >> "$GITHUB_OUTPUT"
