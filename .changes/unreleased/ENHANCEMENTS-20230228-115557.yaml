@@ -1,5 +1,0 @@
-kind: ENHANCEMENTS
-body: 'hashicorp: Support self-hosted runners without sudo support'
-time: 2023-02-28T11:55:57.715137-05:00
-custom:
-  Issue: "42"
