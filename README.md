@@ -1,10 +1,8 @@
 # ghaction-terraform-provider-release
 
-[Reusable GitHub Action Workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows) for releasing HashiCorp, partner, and community Terraform Providers. These workflows can be called directly or used as examples for implementing a custom workflow.
+[Reusable GitHub Action Workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows) for releasing HashiCorp, partner, and community Terraform Providers into the [public Terraform Registry](https://registry.terraform.io/). These workflows can be called directly or used as examples for implementing a custom workflow.
 
 ## Usage
-
-_If you are using the [terraform-provider-scaffolding template repository](https://github.com/hashicorp/terraform-provider-scaffolding), the `.github/workflow/release.yml` file will require modifications from the original template files._
 
 ### Partner and Community Providers
 
@@ -29,7 +27,7 @@ jobs:
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
-      setup-go-version: '1.17.x'
+      setup-go-version-file: 'go.mod'
 ```
 
 See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider-release/blob/main/.github/workflows/community.yml) for all available inputs.
@@ -64,7 +62,7 @@ jobs:
       signore-client-id: '${{ secrets.SIGNORE_CLIENT_ID }}'
       signore-client-secret: '${{ secrets.SIGNORE_CLIENT_SECRET }}'
     with:
-      setup-go-version: '1.17.x'
+      setup-go-version-file: 'go.mod'
       product-version: 'v1.2.3'
 ```
 
@@ -109,7 +107,7 @@ jobs:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
       release-notes: true
-      setup-go-version: '1.17.x'
+      setup-go-version-file: 'go.mod'
 ```
 
 ## Releases
