@@ -83,7 +83,7 @@ jobs:
           go-version: ${{ inputs.setup-go-version }}
           go-version-file: ${{ inputs.setup-go-version-file }}
       # See also: ENGSRV-063: setup-hc-releases GitHub Action
-      - uses: hashicorp/setup-hc-releases@575248a85966143c7636e7375b593aa3ca279597 # v2.1.0
+      - uses: hashicorp/setup-hc-releases@943fb9b54fcea12c90e58f4f24a2b4e5e5e90e4e # v2.1.1
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
