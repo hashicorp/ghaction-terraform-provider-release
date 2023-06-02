@@ -1,0 +1,3 @@
+# Generate copywrite headers
+generate:
+	cd tools; go generate ./...
