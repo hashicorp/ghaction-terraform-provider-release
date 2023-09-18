@@ -74,7 +74,7 @@ jobs:
     # Custom runners range in size from 4 core to 64 core and sizes `small` through `xl` are supported
     runs-on: [custom, linux, large]
     steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
         with:
           fetch-depth: 0
           ref: ${{ inputs.product-version }}
@@ -92,7 +92,7 @@ jobs:
           github-token: ${{ secrets.setup-signore-github-token }}
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
-        uses: goreleaser/goreleaser-action@3fa32b8bb5620a2c1afe798654bbad59f9da4906 # v4.4.0
+        uses: goreleaser/goreleaser-action@7ec5c2b0c6cdda6e8bbb49444bc797dd33d74dd8 # v5.0.0
         with:
           args: release --clean ${{ inputs.goreleaser-release-args }}
         env:
@@ -112,7 +112,7 @@ jobs:
           path: /tmp
       - if: inputs.release-notes
         name: goreleaser release (with release notes)
-        uses: goreleaser/goreleaser-action@3fa32b8bb5620a2c1afe798654bbad59f9da4906 # v4.4.0
+        uses: goreleaser/goreleaser-action@7ec5c2b0c6cdda6e8bbb49444bc797dd33d74dd8 # v5.0.0
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --clean ${{ inputs.goreleaser-release-args }}
         env:
