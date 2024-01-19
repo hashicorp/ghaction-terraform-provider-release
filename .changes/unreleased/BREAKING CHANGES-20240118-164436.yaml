@@ -1,0 +1,7 @@
+kind: BREAKING CHANGES
+body: 'all: Workflows are now using `actions/download-artifact@v4` which is incompatible
+  with `actions/upload-artifact@v3`. Calling workflows must be upgraded to
+  `actions/upload-artifact@v4` when including release notes'
+time: 2024-01-18T16:44:36.091732-05:00
+custom:
+  Issue: "76"
