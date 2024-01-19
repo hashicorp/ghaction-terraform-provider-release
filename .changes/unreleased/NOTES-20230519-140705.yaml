@@ -1,5 +1,0 @@
-kind: NOTES
-body: 'hashicorp: Prevent NodeJS 12 deprecation warnings by upgrading hashicorp/setup-signore'
-time: 2023-05-19T14:07:05.696711-07:00
-custom:
-  Issue: "60"
