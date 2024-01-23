@@ -1,3 +1,9 @@
+## 3.0.1 (January 23, 2024)
+
+BUG FIXES:
+
+* hashicorp: Prevented setup-hc-releases downloads from remaining in working directory ([#79](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/79))
+
 ## 3.0.0 (January 19, 2024)
 
 BREAKING CHANGES:

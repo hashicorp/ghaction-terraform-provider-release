@@ -1,6 +1,0 @@
-kind: BUG FIXES
-body: 'hashicorp: Prevented setup-hc-releases downloads from remaining in working
-  directory'
-time: 2024-01-23T12:45:38.854667-05:00
-custom:
-  Issue: "79"
