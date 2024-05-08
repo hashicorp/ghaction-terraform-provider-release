@@ -1,3 +1,9 @@
+## 4.0.0 (May 08, 2024)
+
+NOTES:
+
+* hashicorp: Prevent NodeJS 16 deprecation warnings by upgrading dependencies ([#88](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/88))
+
 ## 3.0.1 (January 23, 2024)
 
 BUG FIXES:
