@@ -23,7 +23,7 @@ jobs:
   # ... potentially other jobs ...
   terraform-provider-release:
     name: 'Terraform Provider Release'
-    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v3
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v4
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
@@ -49,7 +49,7 @@ jobs:
   # ... potentially other jobs ...
   terraform-provider-release:
     name: 'Terraform Provider Release'
-    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/hashicorp.yml@v3
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/hashicorp.yml@v4
     secrets:
 
       hc-releases-github-token: '${{ secrets.HASHI_RELEASES_GITHUB_TOKEN }}'
@@ -102,7 +102,7 @@ jobs:
   terraform-provider-release:
     name: 'Terraform Provider Release'
     needs: [release-notes]
-    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v3
+    uses: hashicorp/ghaction-terraform-provider-release/.github/workflows/community.yml@v4
     secrets:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
     with:
