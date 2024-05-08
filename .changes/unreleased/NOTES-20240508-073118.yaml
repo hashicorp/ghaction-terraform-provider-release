@@ -1,0 +1,5 @@
+kind: NOTES
+body: 'hashicorp: Prevent NodeJS 16 deprecation warnings by upgrading dependencies'
+time: 2024-05-08T07:31:18.012528-04:00
+custom:
+  Issue: "88"
