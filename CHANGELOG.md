@@ -1,3 +1,9 @@
+## 4.0.1 (May 16, 2024)
+
+NOTES:
+
+* hashicorp: Adjusted self-hosted runner label to new equivalent to prevent workflow errors after May 27th, 2024 ([#93](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/93))
+
 ## 4.0.0 (May 08, 2024)
 
 NOTES:
