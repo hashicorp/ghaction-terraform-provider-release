@@ -1,0 +1,5 @@
+kind: NOTES
+body: 'hashicorp: Adjusted self-hosted runner label to new equivalent to prevent workflow errors after May 27th, 2024'
+time: 2024-05-16T15:32:26.829079-04:00
+custom:
+    Issue: "93"
