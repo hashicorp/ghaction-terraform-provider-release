@@ -1,0 +1,5 @@
+kind: BREAKING CHANGES
+body: 'all: goreleaser-action has been updated to the latest major version, which by default uses GoReleaser v2. Ensure your GoReleaser CLI flags and configurations are v2 compatible before upgrading these workflows. Refer to the [GoReleaser deprecations guide](https://goreleaser.com/deprecations/#removed-in-v2) for additional information.'
+time: 2024-06-18T15:03:18.780856-04:00
+custom:
+    Issue: "97"
