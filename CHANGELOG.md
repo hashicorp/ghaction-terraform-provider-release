@@ -1,3 +1,9 @@
+## 5.0.0 (June 20, 2024)
+
+BREAKING CHANGES:
+
+* all: goreleaser-action has been updated to the latest major version, which by default uses GoReleaser v2. Ensure your GoReleaser CLI flags and configurations are v2 compatible before upgrading these workflows. Refer to the [GoReleaser deprecations guide](https://goreleaser.com/deprecations/#removed-in-v2) for additional information. ([#97](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/97))
+
 ## 4.0.1 (May 16, 2024)
 
 NOTES:
