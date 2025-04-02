@@ -2,3 +2,4 @@ self-hosted-runner:
   # Labels of self-hosted runner in array of string
   labels:
     - custom-linux-large
+    - custom-ubuntu-22.04-x64-16core
