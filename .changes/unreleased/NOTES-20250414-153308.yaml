@@ -1,0 +1,5 @@
+kind: NOTES
+body: 'hashicorp: update custom runner label due to GitHub Actions deprecation of Ubuntu 20.04'
+time: 2025-04-14T15:33:08.666376-04:00
+custom:
+    Issue: "117"
