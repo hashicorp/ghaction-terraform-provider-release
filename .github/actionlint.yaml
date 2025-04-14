@@ -1,5 +1,4 @@
+# https://github.com/rhysd/actionlint/blob/HEAD/docs/config.md
 self-hosted-runner:
-  # Labels of self-hosted runner in array of string
   labels:
-    - custom-linux-large
-    - custom-ubuntu-22.04-x64-16core
+    - custom-ubuntu-22.04-large
