@@ -1,0 +1,10 @@
+---
+schema: 1.1
+
+partition: tf-ecosystem
+
+summary:
+  owner: team-tf-core-plugins
+  description: |
+    Reusable GitHub Action Workflows for releasing HashiCorp, partner, and community Terraform Providers
+  visibility: public
