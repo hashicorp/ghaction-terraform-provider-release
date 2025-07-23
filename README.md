@@ -34,6 +34,12 @@ See the [workflow file](https://github.com/hashicorp/ghaction-terraform-provider
 
 ### HashiCorp Providers
 
+#### ⚠️ Note: As of July 31, 2025, this GHA workflow is no longer the recommended way to release official providers. ⚠️
+
+Official Terraform providers should be published using Common Release Tooling. Please speak to the Terraform Core Plugins team for more information. The guidance below is for a small number of providers published prior to July 31, 2025, and for posterity.
+
+-------
+
 This workflow automatically handles:
 
 - Checking out the Git repository using the `product-version` input as the Git reference.
