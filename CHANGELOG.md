@@ -1,3 +1,9 @@
+## 4.1.0 (September 04, 2025)
+
+NOTES:
+
+* hashicorp: Updates goreleaser/goreleaser-action to v5.1.0. This defaults the behavior of latest to goreleaser ~> v1. ([#128](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/128))
+
 ## 4.0.1 (May 16, 2024)
 
 NOTES:
