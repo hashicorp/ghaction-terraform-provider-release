@@ -1,0 +1,5 @@
+kind: NOTES
+body: "hashicorp: Updates goreleaser/goreleaser-action to v5.1.0. This defaults the behavior of latest to goreleaser ~> v1."
+time: 2025-09-04T15:30:26.954018-04:00
+custom:
+  Issue: "128"
