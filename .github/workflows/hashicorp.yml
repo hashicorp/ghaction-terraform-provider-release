@@ -70,7 +70,7 @@ on:
 
 jobs:
   Release:
-    # Reach out in #team-pss to get your repositories allow-listed to use custom runners
+    # Reach out in #team-stride to get your repositories allow-listed to use custom runners
     runs-on: custom-ubuntu-22.04-large
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
