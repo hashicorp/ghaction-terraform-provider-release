@@ -77,7 +77,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ inputs.product-version }}
-      - uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
+      - uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
         with:
           go-version: ${{ inputs.setup-go-version }}
           go-version-file: ${{ inputs.setup-go-version-file }}
@@ -91,7 +91,7 @@ jobs:
           github-token: ${{ secrets.setup-signore-github-token }}
       - if: inputs.release-notes != true
         name: goreleaser release (without release notes)
-        uses: goreleaser/goreleaser-action@e435ccd777264be153ace6237001ef4d979d3a7a # v6.4.0
+        uses: goreleaser/goreleaser-action@ec59f474b9834571250b370d4735c50f8e2d1e29 # v7.0.0
         with:
           args: release --clean ${{ inputs.goreleaser-release-args }}
         env:
@@ -105,13 +105,13 @@ jobs:
       - if: inputs.release-notes
         id: release-notes-download
         name: Release Notes Download
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: release-notes
           path: /tmp
       - if: inputs.release-notes
         name: goreleaser release (with release notes)
-        uses: goreleaser/goreleaser-action@e435ccd777264be153ace6237001ef4d979d3a7a # v6.4.0
+        uses: goreleaser/goreleaser-action@ec59f474b9834571250b370d4735c50f8e2d1e29 # v7.0.0
         with:
           args: release --release-notes ${{ steps.release-notes-download.outputs.download-path }}/release-notes.txt --clean ${{ inputs.goreleaser-release-args }}
         env:
