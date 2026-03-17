@@ -70,9 +70,7 @@ on:
 
 jobs:
   Release:
-    # Reach out in #team-rel-eng to get your repositories allow-listed to use custom runners
-    # Custom runners range in size from 4 core to 64 core and sizes `small` through `xl` are supported
-    runs-on: custom-linux-large
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
         with:
