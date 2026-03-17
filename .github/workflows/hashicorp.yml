@@ -36,6 +36,10 @@ on:
         description: 'Product Version (e.g. v1.2.3 or github.ref_name if already the tag name)'
         required: true
         type: string
+      changelog:
+        description: 'Add changelog URL to the release metadata'
+        required: false
+        default: 'true'
 
     secrets:
       hc-releases-github-token:
@@ -128,6 +132,7 @@ jobs:
         with:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
+          changelog: ${{ inputs.changelog }}
           version: ${{ inputs.product-version }}
           hc-releases-host: ${{ secrets.hc-releases-host-staging }}
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
