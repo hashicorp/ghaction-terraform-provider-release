@@ -130,3 +130,13 @@ jobs:
           version: ${{ inputs.product-version }}
           hc-releases-host: ${{ secrets.hc-releases-host-staging }}
           hc-releases-key: ${{ secrets.hc-releases-key-staging }}
+      -
+        name: Promote
+        uses: hashicorp/actions-hc-releases-promote@811b5f3b44787dbb5c3aa21d3fe8a4e844eb41ed # v1.0.0
+        with:
+          product-name: ${{ github.event.repository.name }}
+          version: ${{ inputs.product-version }}
+          hc-releases-host: ${{ secrets.hc-releases-host-prod }}
+          hc-releases-key: ${{ secrets.hc-releases-key-prod }}
+          hc-releases-source_env_key: ${{ secrets.hc-releases-key-staging }}
+          hc-releases-terraform-registry-sync-token: ${{ secrets.hc-releases-terraform-registry-sync-token }}
