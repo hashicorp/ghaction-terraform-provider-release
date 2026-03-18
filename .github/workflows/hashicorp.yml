@@ -39,12 +39,12 @@ on:
       changelog:
         description: 'Add changelog URL to the release metadata'
         required: false
-        default: 'true'
+        default: true
         type: boolean
       promote:
         description: 'Promote to production'
         required: false
-        default: 'true'
+        default: true
         type: boolean
 
     secrets:
