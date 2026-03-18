@@ -40,6 +40,12 @@ on:
         description: 'Add changelog URL to the release metadata'
         required: false
         default: 'true'
+        type: boolean
+      promote:
+        description: 'Promote to production'
+        required: false
+        default: 'true'
+        type: boolean
 
     secrets:
       hc-releases-github-token:
@@ -139,6 +145,7 @@ jobs:
       -
         name: Promote
         uses: hashicorp/actions-hc-releases-promote@811b5f3b44787dbb5c3aa21d3fe8a4e844eb41ed # v1.0.0
+        if: inputs.promote == true
         with:
           product-name: ${{ github.event.repository.name }}
           version: ${{ inputs.product-version }}
