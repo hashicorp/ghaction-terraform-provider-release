@@ -124,7 +124,7 @@ jobs:
           SIGNORE_SIGNER: ${{ inputs.signore-signer }}
       -
         name: Create Release metadata
-        uses: hashicorp/actions-hc-releases-create-metadata@55b4c082ae041fe03831520bab4fc475e54b635b # debug
+        uses: hashicorp/actions-hc-releases-create-metadata@0e93868399ba972826b3e12b56915bee475955a3 # v2
         with:
           private-tools-token: ${{ secrets.hc-releases-github-token }}
           product-name: ${{ github.event.repository.name }}
