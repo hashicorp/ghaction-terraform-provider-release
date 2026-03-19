@@ -1,3 +1,9 @@
+## 4.2.0 (March 19, 2026)
+
+NOTES:
+
+* hashicorp: update custom runner label ([#145](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/145))
+
 ## 4.1.0 (September 04, 2025)
 
 NOTES:
