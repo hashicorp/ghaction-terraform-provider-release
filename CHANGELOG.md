@@ -1,3 +1,9 @@
+## 4.2.1 (June 22, 2026)
+
+BUG FIXES:
+
+* Resolves the nodejs20 depedency error, the bump was introduced in the latest release of setup-signore ([#153](https://github.com/hashicorp/ghaction-terraform-provider-release/issues/153))
+
 ## 4.2.0 (March 19, 2026)
 
 NOTES:
