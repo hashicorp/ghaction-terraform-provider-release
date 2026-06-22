@@ -86,7 +86,7 @@ jobs:
         with:
           github-token: ${{ secrets.hc-releases-github-token }}
       # See also: ENGSRV-065: setup-signore GitHub Action
-      - uses: hashicorp/setup-signore@d64bb29059259ffcbdc4c7066cdb296e45e828b3 # v3.0.0
+      - uses: hashicorp/setup-signore@10fc85993bdc9e07ecfa195b926991a366dfc67c # v4.0.0
         with:
           github-token: ${{ secrets.setup-signore-github-token }}
       - if: inputs.release-notes != true
